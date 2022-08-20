@@ -18,7 +18,7 @@ export class User extends CommonEntity{
     @Column( { type:'varchar', nullable: false})
     user_email: string
 
-    @Column( { type:'int', nullable: false})
+    @Column( { type:'int', nullable: false, default: 1})
     user_level: number
 
     @OneToMany(() => Comment, (comment) => comment.user, {
