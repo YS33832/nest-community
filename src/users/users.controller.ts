@@ -22,9 +22,5 @@ export class UsersController {
         )
         return res.sendStatus(200);
     }
-    @UseGuards(JwtAuthGuard)
-    @Get('profile')
-    async getProfile(@Req() req: Request) {
-        return req.user;
-    }
+
 }

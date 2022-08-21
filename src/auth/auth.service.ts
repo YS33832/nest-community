@@ -9,7 +9,7 @@ export class AuthService {
 
     async validateUser(id, password) : Promise<User>{ // 유저 로그인 검증
         try{
-            const user = await this.userService.findOne(id) // 유저 정보 가져오기
+            const user = await this.userService.findOne(id, true) // 유저 정보 가져오기
 
             if(!user) throw new Error('error'); //
 

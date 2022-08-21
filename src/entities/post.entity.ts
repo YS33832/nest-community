@@ -20,7 +20,7 @@ export class Post extends CommonEntity{
     @JoinColumn([
         {
             name: 'user_id',
-            referencedColumnName:'id'
+            referencedColumnName:'user_id'
         }
     ])
     user: User
@@ -31,8 +31,8 @@ export class Post extends CommonEntity{
     @ManyToOne(()=> Board, (board) => board.posts, )
     @JoinColumn([
         {
-            name: 'board_id',
-            referencedColumnName:'id'
+            name: 'board_title',
+            referencedColumnName:'title'
         }
     ])
     board: Board
