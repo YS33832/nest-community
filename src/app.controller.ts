@@ -6,12 +6,9 @@ import {Request} from "express";
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get("test")
-  test(@Req() req: Request){
-    return req.user;
-  }
-  @Get()
-  @Render('site/skin/index')
+
+  @Get('*')
+  @Render('site/index.ejs')
   getHello(@Req() req: Request) {
     return req.user;
   }
