@@ -12,6 +12,8 @@ async function bootstrap() {
   app.use(userDataFromJwt);
   app.useGlobalGuards(new JwtAuthGuard());
   app.useGlobalPipes(new ValidationPipe()); // class-validator 검증 DTO
+  app.useStaticAssets("public")
+  app.setViewEngine('ejs')
   await app.listen(process.env.PORT); //  포트 사용
 }
 bootstrap();

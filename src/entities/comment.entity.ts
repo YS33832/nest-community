@@ -14,7 +14,7 @@ export class Comment extends CommonEntity{
     @JoinColumn([
         {
             name: 'user_id',
-            referencedColumnName:'id'
+            referencedColumnName:'user_id'
         }
     ])
     user: User

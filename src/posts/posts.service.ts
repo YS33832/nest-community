@@ -4,24 +4,61 @@ import {Repository} from "typeorm";
 import {Post} from "../entities/post.entity";
 import {UsersService} from "../users/users.service";
 import {BoardService} from "../board/board.service";
+import {Comment} from "../entities/comment.entity";
 
 @Injectable()
 export class PostsService {
-    constructor(@InjectRepository(Post) private postRepository: Repository<Post>, private readonly userService: UsersService, private readonly boardService: BoardService) {}
 
+    constructor(
+        @InjectRepository(Post) private postRepository: Repository<Post>,
+        @InjectRepository(Comment) private commentRepository: Repository<Comment>,
+        private readonly userService: UsersService, private readonly boardService: BoardService
+    ) {}
+
+    async findOnePost(id): Promise<Post>{
+        const post =  await this.postRepository.findOne({
+            where:{
+                id
+            },
+            relations:{
+                user: true,
+                board: true,
+            }
+        })
+        delete post.user.user_password
+        return post;
+    }
 
     async createPost(user, post){
         try{
+            const userEntity = await this.userService.findOne(user.user_id); // User 엔티티 가져오기
+            const boardEntity = await this.boardService.findOne(post.board_title); // Board 엔티티 가져오기
 
-            const userEntity = await this.userService.findOne(user.user_id);
-            const boardEntity = await this.boardService.findOne(post.board_title);
+            // User, Board 엔티티를 통해 joinColumn 생성
             post.user = userEntity;
             post.board = boardEntity;
             const postEntity =  this.postRepository.create(post);
             await this.postRepository.save(postEntity);
+
             return true;
         }catch(error){
             throw new HttpException("생성 오류!!", 400);
         }
     }
+
+    async createComment(user, comment){
+        try {
+            const userEntity = await this.userService.findOne(user.user_id); // User 엔티티 가져오기
+            const postEntity = await this.findOnePost(comment.post_id); // Post 엔티티 가져오기
+
+            comment.user = userEntity;
+            comment.post = postEntity;
+            const commentEntity = this.commentRepository.create(comment);
+
+            return  await this.commentRepository.save(commentEntity);
+        }catch(error){
+            throw new HttpException("생성 오류!!", 400);
+        }
+    }
+
 }
