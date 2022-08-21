@@ -10,10 +10,9 @@ export class UsersController {
     }
     @Post('join')
     async createUser(@Body() userData: CreateUserDto){
-
         return await this.userService.createUser(userData);;
-
     }
+
     @Post('logout')
     async logOut(@Req() req: Request, @Res() res: Response){
         res.setHeader(

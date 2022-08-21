@@ -11,8 +11,8 @@ export class AuthController {
     @UseGuards(LocalAuthGuard)
     @Post('login')
     async login(@Request() req, @Res() res: Response) {
-        const token = await this.authService.login(req.user);
-        res.cookie('user', token?.access_token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000})
+        const token = await this.authService.login(req.user); // jwt 생성
+        res.cookie('user', token?.access_token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000}) // jwt 쿠키 설정
         return res.json({
             message: "로그인 성공",
         })

@@ -4,10 +4,13 @@ import {Board} from "../entities/board.entity";
 import {Repository} from "typeorm";
 import {CreateBoardDto} from "./dto/create-board.dto";
 
+
 @Injectable()
 export class BoardService {
     constructor(@InjectRepository(Board) private boardRepository: Repository<Board>) {}
-
+    /**
+     * @param title 게시판 이름
+     */
     async findOne(title){
        return await this.boardRepository.findOneBy({title});
     }

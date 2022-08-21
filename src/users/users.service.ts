@@ -8,8 +8,8 @@ import * as bcrypt from 'bcrypt';
 export class UsersService {
     constructor(@InjectRepository(User) private userRepository: Repository<User>) {}
 
-    /*
-    * @Param(password) : 패스워드 가져오는 여부
+    /**
+    * @param password 패스워드 가져오는 여부
     */
     async findOne(user_id: string, password = false){
         if(password){
@@ -20,7 +20,9 @@ export class UsersService {
             return user;
         }
     }
-    async createUser(userdata){
+
+
+    async createUser(userdata){ // 회원가입
         const { user_id, user_password, user_name, user_email } : CreateUserDto = userdata;
 
         const result = await this.findOne(user_id, true);
@@ -44,7 +46,7 @@ export class UsersService {
         return null;
     }
 
-    public getCookieForLogOut() { //로그아웃 쿠기 삭제
+    public getCookieForLogOut() { //로그아웃시 쿠키 삭제
         return `user=; HttpOnly; Path=/; Max-Age=0`;
     }
 }

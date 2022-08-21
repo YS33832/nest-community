@@ -15,7 +15,10 @@ export class PostsService {
         private readonly userService: UsersService, private readonly boardService: BoardService
     ) {}
 
-    async findOnePost(id): Promise<Post>{
+    /**
+    * @param id 게시글 id
+    */
+    async findOnePost(id): Promise<Post>{ // id 를통해 게시글 1개 가져오기
         const post =  await this.postRepository.findOne({
             where:{
                 id

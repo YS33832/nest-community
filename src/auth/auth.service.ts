@@ -27,7 +27,7 @@ export class AuthService {
         }
     }
 
-    async login(user: any){
+    async login(user: any){ // 유저 정보를 통해 jwt 생성 및 리턴
         const payload = { username : user.user_name, sub: user.user_id}
         return{
             access_token : this.jwtService.sign(payload),

@@ -1,7 +1,7 @@
 import {ArgumentMetadata, BadRequestException, Injectable, PipeTransform} from "@nestjs/common";
 import {plainToInstance} from "class-transformer";
 import {validate} from "class-validator";
-
+// class-validator 적용 하기 위한 파이프
 @Injectable()
 export class ValidationPipe implements PipeTransform<any>{
     async transform(value: any, { metatype } : ArgumentMetadata){
