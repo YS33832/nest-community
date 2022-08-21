@@ -1,7 +1,8 @@
-import {Body, Controller, Post, Req} from '@nestjs/common';
-import {Request} from "express";
+import {Body, Controller, Get, Post, Req, UseGuards, Res} from '@nestjs/common';
 import {UsersService} from "./users.service";
 import {CreateUserDto} from "./dto/createUser.dto";
+import {JwtAuthGuard} from "../auth/jwt-auth.guard";
+import {Response, Request} from "express";
 
 @Controller('user')
 export class UsersController {
@@ -9,8 +10,21 @@ export class UsersController {
     }
     @Post('join')
     async createUser(@Body() userData: CreateUserDto){
-        const user = await this.userService.createUser(userData);
-        return user;
 
+        return await this.userService.createUser(userData);;
+
+    }
+    @Post('logout')
+    async logOut(@Req() req: Request, @Res() res: Response){
+        res.setHeader(
+            'Set-cookie',
+            this.userService.getCookieForLogOut(),
+        )
+        return res.sendStatus(200);
+    }
+    @UseGuards(JwtAuthGuard)
+    @Get('profile')
+    async getProfile(@Req() req: Request) {
+        return req.user;
     }
 }

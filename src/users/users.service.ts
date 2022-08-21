@@ -7,10 +7,23 @@ import * as bcrypt from 'bcrypt';
 @Injectable()
 export class UsersService {
     constructor(@InjectRepository(User) private userRepository: Repository<User>) {}
+
+    /*
+    * @Param(password) : 패스워드 가져오는 여부
+    */
+    async findOne(user_id: string, password = false){
+        if(password){
+            return await this.userRepository.findOneBy({user_id});
+        }else{
+            const user = await this.userRepository.findOneBy({user_id});
+            delete user.user_password
+            return user;
+        }
+    }
     async createUser(userdata){
         const { user_id, user_password, user_name, user_email } : CreateUserDto = userdata;
 
-        const result = await this.userRepository.findOneBy({user_id});
+        const result = await this.findOne(user_id, true);
         if(!result){
             const hash_password = await bcrypt.hash(user_password, 10)
             const user = this.userRepository.create({
@@ -29,6 +42,9 @@ export class UsersService {
             };
         }
         return null;
+    }
 
+    public getCookieForLogOut() { //로그아웃 쿠기 삭제
+        return `user=; HttpOnly; Path=/; Max-Age=0`;
     }
 }

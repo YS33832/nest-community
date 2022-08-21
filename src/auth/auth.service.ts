@@ -1,20 +1,19 @@
 import { Injectable, UnauthorizedException} from '@nestjs/common';
-import {LoginUserDto} from "./dto/loginUser.dto";
-import {InjectRepository} from "@nestjs/typeorm";
 import {User} from "../entities/user.entity";
-import {Repository} from "typeorm";
 import * as bcrypt from 'bcrypt';
+import {UsersService} from "../users/users.service";
+import {JwtService} from "@nestjs/jwt";
 @Injectable()
 export class AuthService {
-    constructor(@InjectRepository(User) private readonly userRepository: Repository<User> ) {
-    }
+    constructor(private readonly userService  : UsersService, private jwtService: JwtService) {}
 
-    async login(loginData : LoginUserDto) : Promise<User>{
+    async validateUser(id, password) : Promise<User>{ // 유저 로그인 검증
         try{
-            const { user_id, user_password } = loginData
-            const user = await this.userRepository.findOneBy({user_id})
-            if(!user) throw new Error('error');
-            let result = await bcrypt.compare(user_password, user.user_password);
+            const user = await this.userService.findOne(id) // 유저 정보 가져오기
+
+            if(!user) throw new Error('error'); //
+
+            let result = await bcrypt.compare(password, user.user_password);
             if(result){
                 delete user.user_password;
                 return user;
@@ -27,4 +26,13 @@ export class AuthService {
             throw new UnauthorizedException('아이디와 패스워드를 확인해주세요.');
         }
     }
+
+    async login(user: any){
+        const payload = { username : user.user_name, sub: user.user_id}
+        return{
+            access_token : this.jwtService.sign(payload),
+        }
+    }
+
+
 }
