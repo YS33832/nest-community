@@ -1,4 +1,4 @@
-import {Controller, Get, Req} from '@nestjs/common';
+import {Controller, Get, Render, Req} from '@nestjs/common';
 import { AppService } from './app.service';
 import {Request} from "express";
 
@@ -7,6 +7,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
+  @Render('site/skin/index')
   getHello(@Req() req: Request) {
     return req.user;
   }
