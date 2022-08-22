@@ -1,16 +1,24 @@
+<% const STATIC_URL = 'http://localhost:3000/';%>
 <!Doctype html>
 <html>
 <head>
     <title>커뮤니티</title>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1, user-scalable=yes" name="viewport">
-    <link rel="stylesheet" href="css/tailwind.css">
-    <link href="css/tailwind.dev.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="<%=STATIC_URL%>css/tailwind.css?2" rel="stylesheet">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans+KR:500&display=swap&subset=korean">
 </head>
 <body>
     <header>
-        <div class="h-24 bg-gray-400 flex items-center justify-center">
-            헤더부분
+        <div class="h-16 bg-slate-900 text-slate-300 flex items-center justify-between px-6">
+            <div>
+                <a href="/" class="text-2xl">HOME</a>
+            </div>
+            <div>
+                <a href="/login" class="mr-3 font-sans-kr">로그인</a>
+                <a href="/join" class="font-sans-kr">회원가입</a>
+            </div>
         </div>
     </header>
 

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import {HttpException, Injectable} from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
 import {User} from "../entities/user.entity";
 import {Repository} from "typeorm";
@@ -43,7 +43,7 @@ export class UsersService {
                 user_email,
             };
         }
-        return null;
+        throw new HttpException("같은 아이디에 유저가 존재합니다.", 400);
     }
 
     public getCookieForLogOut() { //로그아웃시 쿠키 삭제

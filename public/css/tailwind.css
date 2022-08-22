@@ -551,31 +551,56 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.h-1 {
-  height: 0.25rem;
+.font-sans-kr {
+  font-family: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.h-16 {
+  height: 4rem;
 }
 
 .w-9 {
   width: 2.25rem;
 }
 
-.text-5xl {
-  font-size: 3rem;
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.bg-slate-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.text-7xl {
+  font-size: 4.5rem;
   line-height: 1;
 }
 
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
-
-.text-amber-100 {
+.text-slate-400 {
   --tw-text-opacity: 1;
-  color: rgb(254 243 199 / var(--tw-text-opacity));
-}
-
-.bg-blend-color-dodge {
-  background-blend-mode: color-dodge;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
 }
 
 /* 테일윈드 css 적용 */
