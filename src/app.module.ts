@@ -7,6 +7,7 @@ import { BoardModule } from './board/board.module';
 import { AuthModule } from './auth/auth.module';
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {ConfigModule} from "@nestjs/config";
+import { LoggerModule } from './logger/logger.module';
 
 @Module({
   imports: [
@@ -25,7 +26,7 @@ import {ConfigModule} from "@nestjs/config";
       entities: [__dirname + "/**/*.entity{.ts,.js}"],
       logging: true,
     }),
-    UsersModule, PostsModule, BoardModule, AuthModule],
+    UsersModule, PostsModule, BoardModule, AuthModule, LoggerModule],
   controllers: [AppController],
   providers: [AppService],
   exports: [AuthModule]
