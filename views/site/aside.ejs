@@ -1,3 +1,14 @@
-<aside class="border-sky-400 h-1 border w-1/4 flex items-center justify-center" style="min-height: 500px;">
-    사이드 부분
+<aside class=" h-1  w-1/4 flex justify-center" style="min-height: 500px;">
+    <div class="flex flex-col w-full">
+        <div class="w-full h-42 border border-amber-900 mb-3">
+            <form name='login_box' method="post" action="<%=render_data.STATIC_URL%>auth/login" class="p-3">
+                <input type="text" name="user_id" class="h-9 w-full border mb-3 border-gray-500 rounded pl-2" placeholder="아이디">
+                <input type="password" name="user_password" class="h-9 w-full border border-gray-500 rounded pl-2" placeholder="패스워드">
+                <button type="submit" class="w-full h-11 bg-gray-800 text-gray-300 mt-4 font-bold border-gray-300 border rounded-2xl">로그인</button>
+            </form>
+        </div>
+        <div class="w-full h-64 border border-amber-900 mb-3">
+            글 리스트
+        </div>
+    </div>
 </aside>
