@@ -2,6 +2,7 @@ import {Controller, Get, Render, Req, Res} from '@nestjs/common';
 import { AppService } from './app.service';
 import {Response,Request} from "express";
 import {MyLogger} from "./logger/logger.service";
+import {STATIC_URL} from "./common/constants";
 
 @Controller()
 export class AppController {
@@ -11,6 +12,13 @@ export class AppController {
   async sendFavicon(@Req() req: Request, @Res() res: Response) {
     res.json("test");
   }
+
+  @Get('logout')
+  logout(@Res() res: Response){
+    res.cookie('user', '', {maxAge : 0});
+    res.redirect(STATIC_URL);
+  }
+
   @Get('/*')
   async render(@Req() req: Request, @Res() res: Response) {
     try{

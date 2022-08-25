@@ -1,13 +1,16 @@
-<% const STATIC_URL = 'http://localhost:3000/';%>
+<% STATIC_URL = 'http://localhost:3000';%>
 <!Doctype html>
+<% timestamp = new Date().getMilliseconds() %>
 <html>
 <head>
     <title>커뮤니티</title>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1, user-scalable=yes" name="viewport">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="<%=STATIC_URL%>css/tailwind.css?2" rel="stylesheet">
+    <link href="<%=STATIC_URL%>/css/tailwind.css?2" rel="stylesheet">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans+KR:500&display=swap&subset=korean">
+    <script type="text/javascript" src="<%=STATIC_URL%>/js/axios.js"></script>
+    <script type="text/javascript" src="<%=STATIC_URL%>/js/common.js?<%=timestamp%>"></script>
 </head>
 <body>
     <header class="mb-5">
@@ -16,8 +19,8 @@
                 <a href="/" class="text-2xl">HOME</a>
             </div>
             <div>
-                <a href="/login" class="mr-3 font-sans-kr">로그인</a>
-                <a href="/join" class="font-sans-kr">회원가입</a>
+                <a href="<%=STATIC_URL%>/user/login" class="mr-3 font-sans-kr">로그인</a>
+                <a href="<%=STATIC_URL%>/user/join" class="font-sans-kr">회원가입</a>
             </div>
         </div>
     </header>
