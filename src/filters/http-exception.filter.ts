@@ -14,6 +14,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
         response
             .status(status)
             .render("site/error",{
+                error: "error",
                 statusCode: status,
                 message: error.message,
                 path: request.url,

@@ -1,12 +1,29 @@
 <%- include('header') %>
-<script>
-    history.pushState(null, null, 'error')
-</script>
-<div class="m-auto font-sans-kr flex justify-between" style="width:1200px">
-    <main class="w-3/4 pr-10">
-        <div class="flex justify-center border-amber-200 border h-full items-center">
-            메인 컨텐츠
+<div class="absolute h-full w-full z-30 bg-black bg-opacity-80 top-16 lg:p-28 p-8">
+    <main class="lg:w-1/2 w-full rounded-b-md m-auto z-40 bg-slate-100 flex justify-center" style="height: 420px">
+        <div class="flex justify-start flex-col w-full h-full items-start text-2xl">
+            <div class="h-12 bg-slate-700 w-full px-6 flex items-center text-slate-300 mb-4">
+                ERROR
+            </div>
+            <span class="w-full mb-5 flex flex-col px-6">
+                <span class="font-bold pb-2 border-b-2 border-b-slate-900 text-2xl">상태코드</span>
+                <span class="mt-2 text-xl text-slate-700"><%=statusCode%></span>
+            </span>
+            <span class="w-full mb-5 flex flex-col px-6">
+                <span class="font-bold pb-2 border-b-2 border-b-slate-900 text-2xl">에러</span>
+                <span class="mt-2 text-xl text-slate-700"><%=message%></span>
+            </span>
+            <span class="w-full mb-5 flex flex-col px-6">
+                <span class="font-bold pb-2 border-b-2 border-b-slate-900 text-2xl">위치</span>
+                <span class="mt-2 text-xl text-slate-700"><%=STATIC_URL%><%=path%></span>
+            </span>
+            <div class="px-6 w-full text-right  ">
+                <a href="<%=STATIC_URL%>" title="메인페이지" class="font-bold text-md text-slate-500 underline underline-offset-8 hover:text-slate-900">
+                    메인페이지
+                </a>
+            </div>
         </div>
     </main>
 </div>
+
 <%- include('footer') %>

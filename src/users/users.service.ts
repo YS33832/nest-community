@@ -43,21 +43,21 @@ export class UsersService {
 
         const result = await this.findOne(user_id, true);
         if(!result){
-            const hash_password = await bcrypt.hash(user_password, 10)
-            const user = this.userRepository.create({
-                user_id,
-                user_password : hash_password,
-                user_email,
-                user_name,
-                user_level : 2,
-            });
-            await this.userRepository.save(user);
+            try {
+                const hash_password = await bcrypt.hash(user_password, 10)
+                const user = this.userRepository.create({
+                    user_id,
+                    user_password: hash_password,
+                    user_email,
+                    user_name,
+                    user_level: 2,
+                });
+                await this.userRepository.save(user);
 
-            return {
-                user_id,
-                user_name,
-                user_email,
-            };
+                return true;
+            }catch(error){
+                throw new HttpException("회원가입 처리도중 에러가 발생했습니다.", 400);
+            }
         }
         throw new HttpException("같은 아이디에 유저가 존재합니다.", 400);
     }
