@@ -5,56 +5,59 @@
   </script>
 <%}%>
 <div class="w-full h-full border p-5">
-    <form name="joinForm" method="POST" action="user/join" class="w-full border-slate-800 border border-b-0">
-        <div class="input_box flex justify-start w-full border-b border-slate-800">
+    <form name="joinForm" method="POST" action="user/join" class="w-full">
+        <div class="input-box border-y">
             <span class="w-1/6  py-7 px-5 bg-slate-200 text-gray-800 ">아이디</span>
-            <div class="flex flex-col pl-4 w-3/5 justify-center">
-                <input type="text" name="user_id" placeholder="아이디를 입력해주세요." class="h-10 border-2 border-slate-400 rounded-md pl-2 w-full">
+            <div class="flex flex-col pl-4 w-3/6 justify-center">
+                <input type="text" name="user_id" placeholder="아이디를 입력해주세요." class="input-basic" onfocusout="id_check(this.value)" onfocus="check_reset('check_msg_id')">
                 <span class="text-sm font-light pt-1">아이디는 3글자 이상 8글자 이하로 입력해주세요.</span>
             </div>
-            <div class="text-red-600 text-sm check_msg_id pt-3 pl-3">
+            <div class="text-red-600 text-sm check_msg_id pt-3 pl-3 text-sm w-2/6">
 
             </div>
         </div>
-        <div class="input_box flex justify-start w-full border-b border-slate-800">
+        <div class="input-box">
             <span class="w-1/6 py-7 px-5 bg-slate-200 text-gray-800  ">비밀번호</span>
             <div class="flex flex-col pl-4 w-3/5 justify-center">
-                <input type="password" name="user_password" placeholder="비밀번호를 입력해주세요." class="h-10 border-2 border-slate-400 rounded-md pl-2 w-full">
+                <input type="password" name="user_password" placeholder="비밀번호를 입력해주세요." class="input-basic" onfocusout="pw_check(this.value)">
                 <span class="text-sm font-light pt-1">비밀번호는 특수문자(!,@,#,$,^,&,*) 포함 8자 이상 15자 이하로 입력해주세요. </span>
             </div>
             <div class="text-red-600 text-sm check_msg_pw pt-3 pl-3">
 
             </div>
         </div>
-        <div class="input_box flex justify-start w-full border-b border-slate-800">
+        <div class="input-box">
             <span class="w-1/6 py-7 px-5 bg-slate-200 text-gray-800 ">비밀번호 확인</span>
             <div class="flex flex-col pl-4 w-3/5 justify-center">
-                <input type="password" name="user_password_check" placeholder="비밀번호를 한번 더 입력해주세요." class="h-10 border-2 border-slate-400 rounded-md pl-2 w-full">
+                <input type="password" name="user_password_check" placeholder="비밀번호를 한번 더 입력해주세요." class="input-basic" onfocusout="pw_re_check(this.value)">
                 <span class="text-sm font-light pt-1">비밀번호와 동일하게 입력해주세요.</span>
             </div>
             <div class="text-red-600 text-sm check_msg_pw_re pt-3 pl-3">
 
             </div>
         </div>
-        <div class="input_box flex justify-start w-full border-b border-slate-800">
+        <div class="input-box">
             <span class="w-1/6  py-7 px-5 bg-slate-200 text-gray-800 ">닉네임</span>
             <div class="flex flex-col pl-4 w-3/5 justify-center">
-                <input type="text" name="user_name" class="h-10 border-2 border-slate-400 rounded-md pl-2 w-full" placeholder="닉네임을 입력해 주세요.">
+                <input type="text" name="user_name" class="input-basic" placeholder="닉네임을 입력해 주세요." onfocusout="name_check(this.value)">
                 <span class="text-sm font-light pt-1">닉네임은 2글자 이상 5글자 이하로 입력해주세요.</span>
             </div>
             <div class="text-red-600 text-sm check_msg_nick pt-3 pl-3">
 
             </div>
         </div>
-        <div class="input_box flex justify-start w-full border-b border-slate-800">
+        <div class="input-box">
             <span class="w-1/6  py-7 px-5 bg-slate-200 text-gray-800 ">이메일</span>
             <div class="flex flex-col pl-4 w-3/5 justify-center">
-                <input type="text" name="user_email" class="h-10 border-2 border-slate-400 rounded-md pl-2 w-full" placeholder="이메일을 입력해주세요.">
+                <input type="text" name="user_email" class="input-basic" placeholder="이메일을 입력해주세요." onfocusout="">
                 <span class="text-sm font-light pt-1">이메일 형식에 맞춰 입력해주세요.</span>
             </div>
             <div class="text-red-600 text-sm check_msg_email pt-3 pl-3">
-                test
+
             </div>
+        </div>
+        <div class="flex mt-4 text-right justify-end">
+            <button type="submit" class="btn-primary bg-slate-700">회원가입</button>
         </div>
     </form>
 </div>

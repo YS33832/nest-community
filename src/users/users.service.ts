@@ -21,6 +21,22 @@ export class UsersService {
         }
     }
 
+    async userValidate(type: string, data : string): Promise<string>{
+        let user: User | null;
+        try {
+            if (type === 'id') {
+                user = await this.findOne(data);
+            } else if (type === 'name') {
+                user = await this.userRepository.findOneBy({user_name: data});
+            } else if (type === 'email') {
+                user = await this.userRepository.findOneBy({user_email: data});
+            }
+            return (user)? "success" : "fail";
+        }catch(error){
+            return "fail";
+        }
+    }
+
 
     async createUser(userdata){ // 회원가입
         const { user_id, user_password, user_name, user_email } : CreateUserDto = userdata;

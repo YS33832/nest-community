@@ -8,6 +8,13 @@ import {Response, Request} from "express";
 export class UsersController {
     constructor(private readonly userService: UsersService) {
     }
+
+    @Post('valid')
+    async userValid(@Body() body): Promise<string>{
+        const { type, data} : { type: string , data: string} = body
+        return await this.userService.userValidate(body.type, body.data);
+    }
+
     @Post('join')
     async createUser(@Body() userData: CreateUserDto){
         return await this.userService.createUser(userData);;
