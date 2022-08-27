@@ -15,7 +15,32 @@
         @apply h-10 border-2 border-slate-400 rounded-md pl-2 w-full;
     }
     .input-box{
-        @apply flex justify-start w-full border-b border-slate-800 border-x;
+        @apply flex justify-start w-full border-b border-slate-300 border-x focus:border-slate-800;
     }
+    .w-100{
+        width:100px;
+    }
+    .w-200{
+        width:200px;
+    }
+    .w-300{
+        width:300px;
+    }
+    .w-400{
+        width:400px;
+    }
+    .h-100{
+        width:100px;
+    }
+    .h-200{
+        width:200px;
+    }
+    .h-300{
+        width:300px;
+    }
+    .sns_login_box{
+        @apply lg:w-[400px] w-300 h-10 items-center flex px-3 mb-2 border border-slate-300 relative font-semibold justify-center;
+    }
+
 }
 

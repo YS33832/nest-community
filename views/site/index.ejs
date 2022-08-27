@@ -1,10 +1,7 @@
-<% user = render_data.user_data;  %>
-<% m = render_data.m;  %>
-<% m2 = render_data.m2;  %>
-<% m3 = render_data.m3;  %>
+<% include('common')%>
 <%- include('header') %>
 <div class="m-auto font-sans-kr flex justify-between" style="width:80%">
-    <main class="" style="width:calc(100% - 315px);">
+    <main class="" <% if(is_aside !== false) {%>style="width:calc(100% - 315px); "<% }else{%>style="width: 100%" <%}%>>
 
 <% if (m === 'user'){ %>
     <%- include('./user/index')%>
@@ -12,7 +9,8 @@
       <%- include('main') %>
 <% } %>
     </main>
-
+    <% if(is_aside !== false) {%>
     <%- include('aside') %>
+    <% } %>
 </div>
 <%- include('footer') %>

@@ -1,0 +1,33 @@
+<div class="w-full p-5">
+
+    <div class="loginFormBox flex justify-center flex-col items-center ">
+            <h4 class="mb-5 font-bold text-2xl  text-slate-700 lg:w-400 w-300 underline underline-offset-8 ">로그인</h4>
+        <form name="loginForm" method="post" action="<%=STATIC_URL%>/auth/login" class=" pb-5 border-b-2 border-b-slate-500 mb-5">
+            <div class="flex-col flex mb-5">
+                <input type="text" name="user_id" maxlength="15" class="input-basic lg:w-400 w-300" placeholder="아이디를 입력하세요.">
+            </div>
+            <div class="flex-col flex mb-5">
+                <input type="password" name="user_password" maxlength="15" class="input-basic lg:w-400 w-300" placeholder="비밀번호를 입력하세요.">
+            </div>
+            <div class="flex justify-between mb-5">
+                <span class="text-sm flex items-center">
+                    <input type="checkbox" class="accent-violet-700 w-5 scale-125 mr-1" value="keep_login">
+                    로그인 유지
+                </span>
+            </div>
+            <button type="submit" class="w-full border shadow-md bg-slate-700 py-2 font-semibold text-xl text-white rounded-sm tracking-widest">로그인</button>
+        </form>
+        <div class="sns_login_box bg-green-500 text-white">
+            <i class="text-xl text-white xi-naver absolute left-3"></i>
+            네이버 로그인
+        </div>
+        <div class="sns_login_box bg-yellow-300 text-yellow-800">
+            <i class="text-xl text-yellow-800 xi-kakaotalk absolute left-3"></i>
+            카카오 로그인
+        </div>
+        <div class="sns_login_box text-black ">
+            <img src="<%=STATIC_URL%>/assets/google_logo.png" width=22 class="absolute left-3">
+            구글 로그인
+        </div>
+    </div>
+</div>
