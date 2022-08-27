@@ -2,7 +2,7 @@
 
     <div class="loginFormBox flex justify-center flex-col items-center ">
             <h4 class="mb-5 font-bold text-2xl  text-slate-700 lg:w-400 w-300 underline underline-offset-8 ">로그인</h4>
-        <form name="loginForm" method="post" action="<%=STATIC_URL%>/auth/login" class=" pb-5 border-b-2 border-b-slate-500 mb-5">
+        <form name="loginForm" method="post" action="<%=STATIC_URL%>/auth/login" class=" pb-5 border-b-2 border-b-slate-500 mb-5" onsubmit="return loginCheck(this)">
             <div class="flex-col flex mb-5">
                 <input type="text" name="user_id" maxlength="15" class="input-basic lg:w-400 w-300" placeholder="아이디를 입력하세요.">
             </div>

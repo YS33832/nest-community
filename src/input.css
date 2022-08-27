@@ -3,7 +3,9 @@
 .font-sans-kr {
     font-family: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-
+.Silkscreen{
+    font-family: 'Silkscreen', "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
 @tailwind components;
 @tailwind utilities;
 /* 테일윈드 css 적용 */
@@ -40,6 +42,9 @@
     }
     .sns_login_box{
         @apply lg:w-[400px] w-300 h-10 items-center flex px-3 mb-2 border border-slate-300 relative font-semibold justify-center;
+    }
+    .nav_menu{
+        @apply flex h-full text-xl font-semibold text-slate-700 mr-10 p-2 transition-all hover:border-slate-700 border-2 border-white;
     }
 
 }

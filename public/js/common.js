@@ -122,6 +122,8 @@ function email_check(email){
         }
     }
 }
+
+// 회원가입 전송전 체크
 function joinFormCheck(form){
     const user_id = form.user_id;
     const user_pw = form.user_password;
@@ -136,4 +138,14 @@ function joinFormCheck(form){
     if(!email_check(user_email.value)) {user_email.focus(); return false;}
 
     return true;
+}
+function loginCheck(form){
+    if(!form.user_id.value || !form.user_password.value){
+        alert("아이디와 비밀번호를 입력해주세요.")
+        return false;
+    }
+}
+
+function open_menu(){
+
 }

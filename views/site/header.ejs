@@ -15,15 +15,22 @@
     <script type="text/javascript" src="<%=STATIC_URL%>/js/common.js?<%=timestamp%>"></script>
 </head>
 <body>
-    <header class="mb-20">
+    <header>
         <div class="h-16 bg-slate-900 text-slate-300 flex items-center justify-between px-6">
             <div>
-                <a href="/" class="text-2xl">HOME</a>
+                <a href="/" class="text-4xl Silkscreen">UtoPiA</a>
             </div>
-            <div>
-                <a href="<%=STATIC_URL%>/user/login" class="mr-3 font-sans-kr">로그인</a>
-                <a href="<%=STATIC_URL%>/user/join" class="font-sans-kr">회원가입</a>
-            </div>
+            <% if(!user){%>
+                <div>
+                    <a href="<%=STATIC_URL%>/user/login" class="mr-3 font-sans-kr">로그인</a>
+                    <a href="<%=STATIC_URL%>/user/join" class="font-sans-kr">회원가입</a>
+                </div>
+            <%}else{%>
+                <div>
+                    <a href="<%=STATIC_URL%>/logout" class="mr-3 font-sans-kr">로그아웃</a>
+                    <a href="<%=STATIC_URL%>/user/mypage" class="font-sans-kr">마이페이지</a>
+                </div>
+            <%}%>
         </div>
     </header>
 

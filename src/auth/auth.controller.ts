@@ -18,8 +18,7 @@ export class AuthController {
             res.cookie('user', token?.access_token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000}) // jwt 쿠키 설정
             res.redirect(STATIC_URL);
         }catch(err){
-            alert(err.message);
-            res.redirect(STATIC_URL);
+            res.send(`<script>alert('${err.message}'); location.href = '${STATIC_URL}'</script>`);
         }
     }
 }
