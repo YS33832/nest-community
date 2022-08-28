@@ -6,6 +6,8 @@
 
 <% if (m === 'user'){ %>
     <%- include('./user/index')%>
+<% }else if(m === 'board') { %>
+    <%- include('./board/index') %>
 <% }else{ %>
       <%- include('main') %>
 <% } %>

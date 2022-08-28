@@ -149,3 +149,19 @@ function loginCheck(form){
 function open_menu(){
 
 }
+function search_option(el){
+    const option_menu = document.getElementById('search-option');
+    const hidden = option_menu.classList.contains('hidden');
+    if(hidden){
+        option_menu.classList.remove('hidden');
+        el.style.borderBottomWidth = '0';
+    }else{
+        option_menu.classList.add('hidden');
+        el.style.borderBottomWidth = '2px';
+    }
+}
+function search_opt_check(el){
+    const search_opt = el.innerHTML;
+    document.getElementById("search_opt_res").innerHTML = search_opt;
+
+}
