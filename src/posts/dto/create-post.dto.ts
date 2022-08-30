@@ -10,5 +10,5 @@ export class CreatePostDto{
 
 
     @IsString()
-    board_title: string
+    board_table: string
 }

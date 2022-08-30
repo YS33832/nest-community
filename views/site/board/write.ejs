@@ -1,0 +1,42 @@
+<form method="post" action="<%=STATIC_URL%>/post/create">
+    <input type="hidden" name="board_table" value="<%=m2%>" onsubmit="return postCheck()">
+    <textarea id="content_textarea" class="hidden" name="content"></textarea>
+    <div class="flex flex-col">
+        <h3 class="text-2xl mb-1.5">제목</h3>
+        <input type="text" name="subject" class="input-basic rounded-sm mb-3 focus:border-sky-500 focus:outline-0">
+    </div>
+    <h3 class="text-2xl mb-1.5">내용</h3>
+
+    <div id="editor" style="height:400px">
+    </div>
+    <div class="flex justify-center my-3">
+        <button type="submit" class="btn-primary bg-slate-300 hover:bg-slate-800 hover:text-slate-100 text-slate-900 mr-3">등록하기</button>
+        <button type="button" class="btn-primary bg-slate-300 hover:bg-slate-800 hover:text-slate-100 text-slate-900">취소하기</button>
+    </div>
+</form>
+
+
+<script>
+    const toolbarOptions = [
+        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+        [{ 'font': [] }],
+
+        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+        ['blockquote', 'code-block'],
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'color': ['red', 'blue', 'yellow', '#eee', '#333', 'violet', 'green'] }, { 'background': [] }],          // dropdown with defaults from theme
+        [{ 'align': [] }],
+        ['link', 'image', 'video'],
+
+        ['clean']  ,
+        // remove formatting button
+    ];
+    const quill = new Quill('#editor', {
+        modules:{
+            toolbar: toolbarOptions,
+
+        },
+        theme: 'snow'
+    });
+</script>

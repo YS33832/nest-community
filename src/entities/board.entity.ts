@@ -1,9 +1,13 @@
-import {Entity, Column, OneToMany} from "typeorm";
+import {Entity, Column, OneToMany, Index} from "typeorm";
 import {CommonEntity} from "./common.entity";
 import {Post} from "./post.entity";
 
 @Entity()
 export class Board extends CommonEntity{
+
+    @Index({ unique: true})
+    @Column({ type:'varchar', unique: true, nullable: false})
+    table : string
 
     @Column({ type:'varchar', unique: true, nullable: false})
     title : string

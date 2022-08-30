@@ -31,8 +31,8 @@ export class Post extends CommonEntity{
     @ManyToOne(()=> Board, (board) => board.posts, )
     @JoinColumn([
         {
-            name: 'board_title',
-            referencedColumnName:'title'
+            name: 'board_table',
+            referencedColumnName:'table'
         }
     ])
     board: Board

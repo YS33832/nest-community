@@ -165,3 +165,10 @@ function search_opt_check(el){
     document.getElementById("search_opt_res").innerHTML = search_opt;
 
 }
+
+function postCheck(){
+    const textarea = document.getElementById("content_textarea");
+    const content = document.querySelector(".ql-editor").innerHTML
+    textarea.innerHTML = content;
+    return true;
+}

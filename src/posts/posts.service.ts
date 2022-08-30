@@ -35,7 +35,7 @@ export class PostsService {
     async createPost(user, post){
         try{
             const userEntity = await this.userService.findOne(user.user_id); // User 엔티티 가져오기
-            const boardEntity = await this.boardService.findOne(post.board_title); // Board 엔티티 가져오기
+            const boardEntity = await this.boardService.findOne(post.board_table); // Board 엔티티 가져오기
 
             // User, Board 엔티티를 통해 joinColumn 생성
             post.user = userEntity;

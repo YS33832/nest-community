@@ -7,6 +7,9 @@ export class CreateBoardDto{
     admin_pw: string
 
     @IsString()
+    table: string
+
+    @IsString()
     title : string
 
     @IsOptional()

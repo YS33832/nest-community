@@ -9,10 +9,10 @@ import {CreateBoardDto} from "./dto/create-board.dto";
 export class BoardService {
     constructor(@InjectRepository(Board) private boardRepository: Repository<Board>) {}
     /**
-     * @param title 게시판 이름
+     * @param table 게시판 이름
      */
-    async findOne(title){
-       return await this.boardRepository.findOneBy({title});
+    async findOne(table){
+       return await this.boardRepository.findOneBy({table});
     }
 
     async createBoard(data: CreateBoardDto){
