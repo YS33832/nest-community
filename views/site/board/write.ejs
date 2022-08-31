@@ -1,5 +1,5 @@
-<form method="post" action="<%=STATIC_URL%>/post/create">
-    <input type="hidden" name="board_table" value="<%=m2%>" onsubmit="return postCheck()">
+<form method="post" action="<%=STATIC_URL%>/post/create" onsubmit="return postCheck()">
+    <input type="hidden" name="board_table" value="<%=m2%>" >
     <textarea id="content_textarea" class="hidden" name="content"></textarea>
     <div class="flex flex-col">
         <h3 class="text-2xl mb-1.5">제목</h3>

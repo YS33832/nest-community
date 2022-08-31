@@ -1,12 +1,12 @@
 import {Body, Controller, Get, Param, Post, Req, Res, UnauthorizedException} from '@nestjs/common';
-import {PostsService} from "./posts.service";
+import {PostService} from "./post.service";
 import {Request, Response} from "express";
 import {CreatePostDto} from "./dto/create-post.dto";
 import {STATIC_URL} from "../common/constants";
 
 @Controller('post')
 export class PostsController {
-    constructor(private readonly postService: PostsService) {}
+    constructor(private readonly postService: PostService) {}
 
     @Post("create")
     async createPost(@Req() req: Request, @Body() body: CreatePostDto, @Res() res: Response){

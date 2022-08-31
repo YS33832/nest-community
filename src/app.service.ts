@@ -3,6 +3,8 @@ import {MyLogger} from "./logger/logger.service";
 import {getParamList, isMobile, undefinedToString} from "./common/common";
 import {STATIC_URL} from "./common/constants";
 import {Request, Response} from "express";
+import {BoardService} from "./board/board.service";
+import {PostService} from "./posts/post.service";
 type init_render = {
   source: string
   alert_msg : string
@@ -22,7 +24,7 @@ type init_render = {
 }
 @Injectable()
 export class AppService {
-  constructor(private logger : MyLogger) {
+  constructor(private logger : MyLogger, private boardService : BoardService, private postService: PostService) {
   }
 
   initRender(req): init_render | false {
@@ -59,6 +61,12 @@ export class AppService {
   async siteRender(req: Request, res: Response){
     try{
       const render_data : init_render | false = this.initRender(req);
+      if(render_data){
+        if(render_data.m === 'board' && render_data.m3 === 'list'){
+          let board = await this.boardService.findOne(render_data.m2);
+          render_data['board'] = board;
+        }
+      }
       if(render_data !== false){
         res.render(render_data.source, {render_data});
       }

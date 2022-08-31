@@ -23,6 +23,7 @@ import { LoggerModule } from './logger/logger.module';
       password: process.env.DB_PW,
       database: process.env.DB,
       synchronize: true,
+      timezone: 'Asia/seoul',
       entities: [__dirname + "/**/*.entity{.ts,.js}"],
       logging: true,
     }),

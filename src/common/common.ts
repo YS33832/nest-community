@@ -25,3 +25,12 @@ export function getParamList(req): Array<string>{
 export function undefinedToString(s){
     return s ?? ''
 }
+export function getYmdHis(time){
+    const Y = time.getFullYear();
+    const m = time.getMonth() + 1;
+    const d = time.getDate();
+    const h = time.getHours();
+    const i = time.getMinutes();
+    const s = time.getSeconds();
+    return `${Y}-${m}-${d} ${h}:${i}:${s}`;
+}

@@ -5,9 +5,10 @@ import {Post} from "../entities/post.entity";
 import {UsersService} from "../users/users.service";
 import {BoardService} from "../board/board.service";
 import {Comment} from "../entities/comment.entity";
+import {Board} from "../entities/board.entity";
 
 @Injectable()
-export class PostsService {
+export class PostService {
 
     constructor(
         @InjectRepository(Post) private postRepository: Repository<Post>,

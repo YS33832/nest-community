@@ -12,7 +12,19 @@ export class BoardService {
      * @param table 게시판 이름
      */
     async findOne(table){
-       return await this.boardRepository.findOneBy({table});
+       return await this.boardRepository.findOne({
+           relations:{
+             posts: true,
+           },
+          where:{
+              table
+          },
+           order:{
+               posts:{
+                   createdAt:"DESC",
+               }
+           }
+       });
     }
 
     async createBoard(data: CreateBoardDto){
@@ -22,5 +34,4 @@ export class BoardService {
         const boardEntity = this.boardRepository.create(board);
         await this.boardRepository.save(boardEntity);
     }
-
 }

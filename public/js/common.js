@@ -168,7 +168,17 @@ function search_opt_check(el){
 
 function postCheck(){
     const textarea = document.getElementById("content_textarea");
-    const content = document.querySelector(".ql-editor").innerHTML
+    const content = document.querySelector(".ql-editor").innerHTML;
     textarea.innerHTML = content;
     return true;
+}
+
+function getYmdHis(time){
+    const Y = time.getFullYear();
+    const m = time.getMonth() + 1;
+    const d = time.getDate();
+    const h = time.getHours();
+    const i = time.getMinutes();
+    const s = time.getSeconds();
+    return `${Y}-${m}-${d} ${h}:${i}:${s}`;
 }
