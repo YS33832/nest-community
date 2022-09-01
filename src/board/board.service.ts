@@ -11,10 +11,12 @@ export class BoardService {
     /**
      * @param table 게시판 이름
      */
-    async findOne(table){
+    async findOne(table, withPost = true){
        return await this.boardRepository.findOne({
            relations:{
-             posts: true,
+             posts: {
+                 user: withPost,
+             },
            },
           where:{
               table

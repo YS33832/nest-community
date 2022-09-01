@@ -1,0 +1,25 @@
+<%
+    post = render_data.post;
+    writer = post.user;
+ %>
+<div class="w-full border border-blue-100 flex flex-col mb-5">
+    <div class="px-5 py-3 text-xl bg-slate-200 font-semibold flex justify-between items-center">
+        <span>
+            <%=post.subject%>
+        </span>
+        <span class="w-[140px] text-sm text-right text-slate-600 font-medium">
+            <%=lib.getYmdHis(post.createdAt)%>
+        </span>
+    </div>
+    <div class="py-3 px-5 border-b border-b-slate-300 text-[0.95rem]">
+        작성자 : <%=writer.user_name%>
+    </div>
+    <div id="view_content" class="py-10 min-h-[700px] px-5">
+        <%-post.content%>
+    </div>
+</div>
+<div class="flex justify-between mb-10">
+    <button class="btn-primary">이전글</button>
+    <button class="btn-primary">다음글</button>
+</div>
+<%-include('list')%>

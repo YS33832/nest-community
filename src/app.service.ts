@@ -13,6 +13,7 @@ type init_render = {
   m: string
   m2: string
   m3: string
+  m4: string
   IS_MOBILE : boolean
   STATIC_URL : string
   CURRENT_DOMAIN: string
@@ -42,6 +43,7 @@ export class AppService {
         m: undefinedToString(param_list[0]),
         m2: undefinedToString(param_list[1]),
         m3: undefinedToString(param_list[2]),
+        m4: undefinedToString(param_list[3]),
         IS_MOBILE : is_mobile,
         STATIC_URL : STATIC_URL,
         CURRENT_DOMAIN: domain,
@@ -65,6 +67,11 @@ export class AppService {
         if(render_data.m === 'board' && render_data.m3 === 'list'){
           let board = await this.boardService.findOne(render_data.m2);
           render_data['board'] = board;
+        }else if(render_data.m === 'board' && render_data.m3 === 'view'){
+          let board = await this.boardService.findOne(render_data.m2);
+          let post = await this.postService.findOnePost(render_data.m4);
+          render_data['board'] = board;
+          render_data['post'] = post;
         }
       }
       if(render_data !== false){

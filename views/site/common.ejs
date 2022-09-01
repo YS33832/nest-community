@@ -6,5 +6,52 @@ m3 = render_data.m3;
 is_aside = true;
 
 if(m === 'user' && m2 === 'login') is_aside = false;
+lib = {
+    getPostDate: function (time){
+            const now = Date.now();
+            const interval = Math.floor((now - time) / 1000);
+            let date = '';
+            if(interval < 60){
+                date = `${interval}초 전`;
+            }else if(interval >= 60 && interval < 3600){
+                date = `${Math.floor(interval / 60)}분 전`;
+            }else if(interval > 3600 && interval < 86400){
+                date = `${Math.floor((interval / 60) / 60)}시간 전`;
+            }
+
+            if(date !== ''){
+                return date;
+            }else{
+                let Y = time.getFullYear();
+                let m = time.getMonth() + 1;
+                if(m < 10){ m = `0${m}`; }
+                let d = time.getDate();
+                if(d < 10){ d = `0${d}`; }
+                let h = time.getHours();
+                if(h < 10){ h = `0${h}`; }
+                let i = time.getMinutes();
+                if(i < 10){ i = `0${i}`; }
+                let s = time.getSeconds();
+                if(s < 10){ s = `0${s}`; }
+
+                return `${m}-${d}`;
+            }
+    },
+    getYmdHis : function (time){
+        let Y = time.getFullYear();
+        let m = time.getMonth() + 1;
+        if(m < 10){ m = `0${m}`; }
+        let d = time.getDate();
+        if(d < 10){ d = `0${d}`; }
+        let h = time.getHours();
+        if(h < 10){ h = `0${h}`; }
+        let i = time.getMinutes();
+        if(i < 10){ i = `0${i}`; }
+        let s = time.getSeconds();
+        if(s < 10){ s = `0${s}`; }
+
+        return `${Y}-${m}-${d} ${h}:${i}:${s}`;
+    },
+}
 
 %>

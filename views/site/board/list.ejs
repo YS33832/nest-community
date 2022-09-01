@@ -1,7 +1,8 @@
 <%
     board = render_data.board;
+    if(render_data.board?.posts){
     posts = board.posts;
-
+    }
 %>
 <div class="w-full h-[200px] border border-slate-700 mb-5">
 
@@ -38,12 +39,16 @@
             <span class="w-[10%] text-center">조회</span>
         </div>
         <% posts.forEach((post) =>{ %>
-        <% postTime = getYmdHis(post.createdAt).substring(10)  %>
+        <% postTime = lib.getPostDate(post.createdAt)  %>
             <div class="flex h-[35px] items-center border-b border-b-slate-400">
-                <span class="w-[10%] text-center text-slate-700"><%=post.board_table%>></span>
-                <span class="w-[60%] text-left text-slate-700"><%=post.subject%></span>
-                <span class="w-[10%] text-center text-slate-700"><%=post.user_id%></span>
-                <span class="w-[10%] text-center text-slate-700"><%=postTime%></span>
+                <span class="w-[10%] text-center text-slate-400 text-sm">[<%=board.title.replace("게시판", "")%>]</span>
+                <a href="<%=STATIC_URL%>/board/free/view/<%=post.id%>" class="w-[60%] text-left text-slate-700 hover:text-slate-900 hover:font-semibold" title="<%=post.subject%>">
+                    <span>
+                        <%=post.subject%>
+                    </span>
+                </a>
+                <span class="w-[10%] text-center text-slate-700"><%=post.user.user_name%></span>
+                <span class="w-[10%] text-center text-slate-700 text-sm"><%=postTime%></span>
                 <span class="w-[10%] text-center text-violet-800 font-semibold"><%=post.view_count%></span>
             </div>
         <%  }) %>
