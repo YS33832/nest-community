@@ -182,3 +182,5 @@ function getYmdHis(time){
     const s = time.getSeconds();
     return `${Y}-${m}-${d} ${h}:${i}:${s}`;
 }
+
+

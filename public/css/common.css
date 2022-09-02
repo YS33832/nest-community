@@ -18,3 +18,7 @@ html{
 .nav_menu:hover{
     border-radius: 90% 80%;
 }
+[contentEditable=true]:empty:not(:focus):before {
+    content: attr(data-text);
+    color: #999;
+}

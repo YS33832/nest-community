@@ -16,13 +16,12 @@ export class PostsController {
         res.redirect(STATIC_URL+`board/${body.board_table}/list`);
     }
 
-    @Post("comment/create")
+    @Post("comment/write")
     async createComment(@Req() req: Request, @Body() body){
         if(!req.user) throw new UnauthorizedException("로그인후 작성해주세요,");
 
         return await this.postService.createComment(req.user, body);
     }
-
     @Get(":id")
     async getPost(@Param() param){
         return await this.postService.findOnePost(param.id);

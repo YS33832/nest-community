@@ -54,7 +54,6 @@ export class PostService {
         try {
             const userEntity = await this.userService.findOne(user.user_id); // User 엔티티 가져오기
             const postEntity = await this.findOnePost(comment.post_id); // Post 엔티티 가져오기
-
             comment.user = userEntity;
             comment.post = postEntity;
             const commentEntity = this.commentRepository.create(comment);

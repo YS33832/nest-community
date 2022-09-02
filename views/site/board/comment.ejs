@@ -1,0 +1,48 @@
+<div class="my-5">
+    <h2 class="text-xl border-b-2 border-b-slate-900 pb-2">댓글</h2>
+    <div class="min-h-[90px] border-b border-b-[#eee] py-[5px] flex">
+        <div class="basis-[70px] border-r-2 border-r-[#eee]">
+            프로필 이미지
+        </div>
+        <div class="flex flex-[1] flex-col flex-wrap">
+            <span class="text-sm pb-0.5 border-b border-b-[#eee] w-full flex items-center pl-2">작성자</span>
+            <span class="text-sm pl-2 py-0.5 w-full flex flex-wrap"></span>
+        </div>
+    </div>
+</div>
+<div class="border-2 border-slate-700 rounded-md p-3 mb-5">
+    <form name="commentForm" action="<%=STATIC_URL%>/post/comment/write" method="post" onsubmit="return writeComment(this)">
+        <input type="hidden" name="post_id" value="<%=post.id%>">
+        <div id="content" class="inline-block resize-none w-full py-1 px-2 min-h-[70px] text-sm outline-0" data-text="댓글을 작성해주세요..." contenteditable="true"></div>
+        <div class="flex justify-between items-end">
+            <div>
+                <span>
+                    <i class="xi-emoticon-happy-o text-3xl text-slate-600 mr-3"></i>
+                </span>
+                <span>
+                    <input type="file" id="commentImg" name="commentImg" hidden>
+                    <label for="commentImg">
+                        <i class="xi-image-o text-3xl text-slate-600"></i>
+                    </label>
+                </span>
+            </div>
+            <div>
+                <button type="submit" class="text-white px-3 py-1 border-3 bg-slate-600 border-slate-700 rounded-md whitespace-nowrap" >댓글쓰기</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    document.getElementById('content').addEventListener('input', function () {
+        this.style.height = "";
+        this.style.height = this.scrollHeight + "px";
+    });
+    function writeComment(f){
+        let content = document.getElementById("content").innerHTML;
+        const post_id = f.post_id.value;
+        let lastBr = content.lastIndexOf("<br>");
+        content = content.substring(0, lastBr);
+        console.log(content);
+        return false;
+    }
+</script>
